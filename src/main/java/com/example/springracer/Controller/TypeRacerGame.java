@@ -1,4 +1,4 @@
-package com.fredrik.typeRacer;
+package com.example.springracer.Controller;
 
 import java.util.Scanner;
 
