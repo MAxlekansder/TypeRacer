@@ -38,7 +38,7 @@ public class TypeRacerGame
 
         System.out.println("Percentage Similarity: " + percentage + "%");
         System.out.println("This is what you got wrong: " + stringValidation.compareStrings(sentence, userInput));
-        player.setTime(userTime);
+        player.setStats(userTime, percentage, sentence, userInput);
         System.exit(0);
     }
 }

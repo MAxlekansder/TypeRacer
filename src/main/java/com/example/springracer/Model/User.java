@@ -13,8 +13,9 @@ public class User {
     private long id;
     private String name;
     private String time;
-    private String percentCorrect;
+    private int percentCorrect;
     private String correctString;
+    private String userText;
 
     public User(String name){
         this.name = name;
@@ -23,6 +24,13 @@ public class User {
     public User()
     {
 
+    }
+
+    public void setStats(String time, int percentCorrect, String correctString, String userText){
+        this.time = time;
+        this.percentCorrect = percentCorrect;
+        this.correctString = correctString;
+        this.userText = userText;
     }
 
     public long getId()
@@ -53,5 +61,35 @@ public class User {
     public void setTime(String time)
     {
         this.time = time;
+    }
+
+    public String getPercentCorrect()
+    {
+        return percentCorrect;
+    }
+
+    public void setPercentCorrect(String percentCorrect)
+    {
+        this.percentCorrect = percentCorrect;
+    }
+
+    public String getCorrectString()
+    {
+        return correctString;
+    }
+
+    public void setCorrectString(String correctString)
+    {
+        this.correctString = correctString;
+    }
+
+    public String getUserText()
+    {
+        return userText;
+    }
+
+    public void setUserText(String userText)
+    {
+        this.userText = userText;
     }
 }
