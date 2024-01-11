@@ -11,6 +11,24 @@ public class DatabaseWriter {
 
     public void writeUser(User user) {
         DatabaseConnector databaseConnector = new DatabaseConnector();
+        try (Connection connection = databaseConnector.getConnection()) {
+            String addPlayerActiveClass = "INSERT INTO TypeRacer.User (PlayerName) VALUES (?)";
+
+            try (PreparedStatement statement = connection.prepareStatement(addPlayerActiveClass, Statement.RETURN_GENERATED_KEYS)) {
+
+                statement.setString(1, user.getName());
+                statement.executeUpdate();
+
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        } catch (SQLException e) {
+            DatabaseConnector.handleSQL(e);
+        }
+    }
+
+    public void writeUserSession(User user) {
+        DatabaseConnector databaseConnector = new DatabaseConnector();
         try (Connection connection = DatabaseConnector.getConnection()) {
             String addPlayerActiveClass = "INSERT INTO TypeRacer.User (PlayerName) VALUES (?)";
 

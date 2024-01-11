@@ -1,14 +1,18 @@
 package com.example.springracer.JDBCConnector;
 
+import com.example.springracer.Controller.Randomizer;
+
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Random;
 
 
 public class DatabaseGetter {
 
-    public String getStringName(int randomNumber) {
+    public String getStringName() {
+        Randomizer randomizer = new Randomizer();
         DatabaseConnector databaseConnector = new DatabaseConnector();
         String nameGenerator = "";
         try (Connection connection = DatabaseConnector.getConnection()) {
@@ -16,12 +20,11 @@ public class DatabaseGetter {
 
             try (PreparedStatement statement = connection.prepareStatement(addDataToClasses)) {
 
-                statement.setInt(0,randomNumber);
+                statement.setInt(0, randomizer.generateNumber());
                 statement.executeUpdate();
 
                 ResultSet resultSet = statement.executeQuery();
-                while(resultSet.next()) { nameGenerator = resultSet.getString(nameGenerator);}
-
+                while(resultSet.next()) { nameGenerator = resultSet.getString("SentenceName");}
 
 
             } catch (SQLException e) {

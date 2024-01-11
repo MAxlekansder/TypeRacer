@@ -1,4 +1,5 @@
 package com.example.springracer.Controller;
+import com.example.springracer.JDBCConnector.DatabaseGetter;
 import com.example.springracer.JDBCConnector.DatabaseWriter;
 import com.example.springracer.Model.User;
 import com.example.springracer.Controller.StringValidation;
@@ -10,8 +11,9 @@ public class TypeRacerGame
 
     Scanner scanner = new Scanner(System.in);
 
-    public void startGame(String sentence)
+    public void startGame()
     {
+        DatabaseGetter databaseGetter = new DatabaseGetter();
         DatabaseWriter databaseWriter = new DatabaseWriter();
         Timer timer = new Timer();
         StringValidation stringValidation = new StringValidation();
@@ -19,7 +21,7 @@ public class TypeRacerGame
         System.out.println("Please enter your name");
         User player = new User(scanner.nextLine());
         databaseWriter.writeUser(player);
-
+        String sentence = databaseGetter.getStringName();
 
         System.out.println("Type the following sentence as fast as you can:");
         timer.countdown();
