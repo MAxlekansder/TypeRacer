@@ -29,15 +29,21 @@ public class TypeRacerGame
         boolean isCorrect = userInput.equals(sentence);
 
         System.out.println(isCorrect ? "Correct!" : "Incorrect!");
-        System.out.println(timer.getTime(startTimer));
+        String userTime = timer.getTime(startTimer);
+
+        System.out.println(userTime);
 
         double similarity = stringValidation.calculateJaccardSimilarity(userInput, sentence);
         int percentage = (int) (similarity * 100);
 
         System.out.println("Percentage Similarity: " + percentage + "%");
+<<<<<<< HEAD
         System.out.println("This is what you got wrong: " + stringValidation.findDifferingCharacters(sentence, userInput));
         System.out.println("Alexander sträng" + stringValidation.StringComparator(sentence, userInput));
+=======
+        System.out.println("This is what you got wrong: " + stringValidation.compareStrings(sentence, userInput));
+        player.setTime(userTime);
+        System.exit(0);
+>>>>>>> 74809a03860861678aff3c3f80b71b386105e1c2
     }
-
-
 }

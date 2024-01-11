@@ -12,8 +12,9 @@ public class User {
 @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
-
-    private String timer;
+    private String time;
+    private String percentCorrect;
+    private String correctString;
 
     public User(String name){
         this.name = name;
@@ -44,5 +45,13 @@ public class User {
         this.name = name;
     }
 
+    public String getTime()
+    {
+        return time;
+    }
 
+    public void setTime(String time)
+    {
+        this.time = time;
+    }
 }
