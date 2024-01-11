@@ -41,6 +41,4 @@ public class TypeRacerGame
         player.setTime(userTime);
         System.exit(0);
     }
-
-
 }
