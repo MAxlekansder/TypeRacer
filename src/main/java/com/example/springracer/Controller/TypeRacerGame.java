@@ -1,5 +1,6 @@
 package com.example.springracer.Controller;
 import com.example.springracer.Model.User;
+import com.example.springracer.Controller.StringValidation;
 
 import java.util.Scanner;
 
@@ -10,7 +11,6 @@ public class TypeRacerGame
 
     public void startGame(String sentence)
     {
-        // TODO: Refine this method
         Timer timer = new Timer();
         StringValidation stringValidation = new StringValidation();
 
@@ -36,6 +36,7 @@ public class TypeRacerGame
 
         System.out.println("Percentage Similarity: " + percentage + "%");
         System.out.println("This is what you got wrong: " + stringValidation.findDifferingCharacters(sentence, userInput));
+        System.out.println("Alexander sträng" + stringValidation.StringComparator(sentence, userInput));
     }
 
 

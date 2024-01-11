@@ -52,4 +52,18 @@ public class StringValidation {
         System.out.println(differingChars);
         return differingChars.toString();
     }
+
+    public class StringComparator {
+        public static String findMissingCharacters(String correctInput, String userInput) {
+            StringBuilder missingCharacters = new StringBuilder();
+
+            for (char c : correctInput.toCharArray()) {
+                if (userInput.indexOf(c) == -1) {
+                    missingCharacters.append(c);
+                }
+            }
+
+            return missingCharacters.toString();
+        }
+    }
 }
