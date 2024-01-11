@@ -1,4 +1,5 @@
 package com.example.springracer.Controller;
+import com.example.springracer.JDBCConnector.DatabaseWriter;
 import com.example.springracer.Model.User;
 import com.example.springracer.Controller.StringValidation;
 
@@ -11,11 +12,13 @@ public class TypeRacerGame
 
     public void startGame(String sentence)
     {
+        DatabaseWriter databaseWriter = new DatabaseWriter();
         Timer timer = new Timer();
         StringValidation stringValidation = new StringValidation();
 
         System.out.println("Please enter your name");
         User player = new User(scanner.nextLine());
+        databaseWriter.writeUser(player);
 
 
         System.out.println("Type the following sentence as fast as you can:");
@@ -37,13 +40,9 @@ public class TypeRacerGame
         int percentage = (int) (similarity * 100);
 
         System.out.println("Percentage Similarity: " + percentage + "%");
-<<<<<<< HEAD
-        System.out.println("This is what you got wrong: " + stringValidation.findDifferingCharacters(sentence, userInput));
-        System.out.println("Alexander sträng" + stringValidation.StringComparator(sentence, userInput));
-=======
         System.out.println("This is what you got wrong: " + stringValidation.compareStrings(sentence, userInput));
         player.setTime(userTime);
         System.exit(0);
->>>>>>> 74809a03860861678aff3c3f80b71b386105e1c2
+
     }
 }
