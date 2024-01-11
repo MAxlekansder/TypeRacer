@@ -52,4 +52,25 @@ public class StringValidation {
         System.out.println(differingChars);
         return differingChars.toString();
     }
+
+    public String compareStrings(String correctString, String userInput) {
+        int minLength = Math.min(correctString.length(), userInput.length());
+        StringBuilder feedbackText = new StringBuilder();
+
+        for (int i = 0; i < minLength; i++) {
+            char correctChar = correctString.charAt(i);
+            char userChar = userInput.charAt(i);
+
+            if (correctChar == userChar) {
+                feedbackText.append(correctChar);
+            } else {
+                feedbackText.append("\u001B[31m").append(correctChar).append("\u001B[0m"); // ANSI escape code for red text
+            }
+        }
+
+        // Append the remaining correct characters without formatting
+        feedbackText.append(correctString.substring(minLength));
+
+        return feedbackText.toString();
+    }
 }

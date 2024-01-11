@@ -13,7 +13,7 @@ public class User {
     private long id;
     private String name;
 
-    private String timer;
+    private String time;
 
     public User(String name){
         this.name = name;
@@ -44,5 +44,13 @@ public class User {
         this.name = name;
     }
 
+    public String getTime()
+    {
+        return time;
+    }
 
+    public void setTime(String time)
+    {
+        this.time = time;
+    }
 }
