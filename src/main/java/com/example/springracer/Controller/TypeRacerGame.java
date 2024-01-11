@@ -1,5 +1,4 @@
 package com.example.springracer.Controller;
-
 import com.example.springracer.Model.User;
 
 import java.util.Scanner;
@@ -13,13 +12,14 @@ public class TypeRacerGame
     {
         // TODO: Refine this method
         Timer timer = new Timer();
+        StringValidation stringValidation = new StringValidation();
 
         System.out.println("Please enter your name");
         User player = new User(scanner.nextLine());
 
 
-
         System.out.println("Type the following sentence as fast as you can:");
+        timer.countdown();
         System.out.println(sentence);
 
         long startTimer = System.currentTimeMillis();
@@ -30,6 +30,12 @@ public class TypeRacerGame
 
         System.out.println(isCorrect ? "Correct!" : "Incorrect!");
         System.out.println(timer.getTime(startTimer));
+
+        double similarity = stringValidation.calculateJaccardSimilarity(userInput, sentence);
+        int percentage = (int) (similarity * 100);
+
+        System.out.println("Percentage Similarity: " + percentage + "%");
+        System.out.println("This is what you got wrong: " + stringValidation.findDifferingCharacters(sentence, userInput));
     }
 
 

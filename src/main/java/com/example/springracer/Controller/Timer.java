@@ -25,10 +25,19 @@ public class Timer
     }
 
     public void countdown(){
-        System.out.println();
+        sleep();
+        for (int i = 3; i > 0; i--){
+            System.out.println(i);
+            sleep();
+        }
+        System.out.println("GO!");
     }
 
     public void sleep(){
-
+        try{
+            Thread.sleep(1000);
+        } catch (Exception e){
+            System.out.println("Could not sleep");
+        }
     }
 }
